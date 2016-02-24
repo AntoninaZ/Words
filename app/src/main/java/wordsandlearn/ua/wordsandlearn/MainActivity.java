@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.fragment_container).setLayoutParams(params);
     }
 
+    public Fragment getPresentFragment() {
+        return mPresentFragment;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

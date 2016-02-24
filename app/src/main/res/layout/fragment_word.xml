@@ -10,9 +10,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="100dp"
-            android:textSize="40dp"
-            android:background="@android:color/darker_gray"
-            android:text="uguygiugyu"/>
+            android:textSize="40dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -53,14 +51,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        android:background="@android:color/darker_gray"/>
+        android:gravity="center_horizontal"
+        android:layout_margin="10dp"/>
 
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
         android:layout_above="@+id/rlCurrentWord"/>
-
 
 </RelativeLayout>
