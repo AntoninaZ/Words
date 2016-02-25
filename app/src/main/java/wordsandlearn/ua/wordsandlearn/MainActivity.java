@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setToolbar();
         configContent(MainActivityFragment.newInstance());
     }
 
     private void setToolbar() {
         mToolBar = (Toolbar) findViewById(R.id.toolbar);
+        mToolBar.setVisibility(View.VISIBLE);
         if (mToolBar != null) {
             setSupportActionBar(mToolBar);
             mToolBar.setNavigationIcon(R.mipmap.ic_launcher);
@@ -40,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
     public void configContent(Fragment fragment) {
         if (!this.isFinishing() && fragment != null) {
             mPresentFragment = fragment;
-            putContentBelowToolBar();
+            if (!(mPresentFragment instanceof WordFragment)) {
+                setToolbar();
+                putContentBelowToolBar();
+            }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mPresentFragment).commit();
         }
     }

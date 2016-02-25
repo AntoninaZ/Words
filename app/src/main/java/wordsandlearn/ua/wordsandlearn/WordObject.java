@@ -7,11 +7,12 @@ import java.util.ArrayList;
  */
 public class WordObject extends ArrayList<LetterObject>{
 
-    public LetterObject getLeterById(int id) {
+    public LetterObject getLetterById(int id) {
         LetterObject letterObject = new LetterObject();
         for (LetterObject obj: this) {
             if (id == obj.getId()) {
                 letterObject = obj;
+                break;
             } else letterObject = null;
         }
         return letterObject;

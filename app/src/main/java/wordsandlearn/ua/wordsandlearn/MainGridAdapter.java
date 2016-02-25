@@ -69,8 +69,7 @@ public class MainGridAdapter  extends BaseAdapter {
 
         public void onClick(View v)
         {
-            ((MainActivity) c).configContent(
-                   WordFragment.newInstance());
+            ((MainActivity) c).configContent(WordFragment.newInstance());
         }
     }
 }
