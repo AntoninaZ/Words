@@ -1,54 +1,69 @@
 package wordsandlearn.ua.wordsandlearn.view;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import wordsandlearn.ua.wordsandlearn.LetterObject;
+import wordsandlearn.ua.wordsandlearn.model.LetterObject;
 import wordsandlearn.ua.wordsandlearn.MainActivity;
 import wordsandlearn.ua.wordsandlearn.WordFragment;
-import wordsandlearn.ua.wordsandlearn.WordObject;
+import wordsandlearn.ua.wordsandlearn.model.WordObject;
 
 /**
  * Created by antonina on 22.02.2016.
  */
 public class CurrentWordLayout extends LinearLayout implements View.OnClickListener {
-    private Context mContext;
-    private String mWord;
+     private String mWord;
     private WordObject mWordObject;
 
-    public CurrentWordLayout(Context context, String word) {
+    public CurrentWordLayout(Context context) {
         super(context);
-        this.mContext = context;
-        this.mWord = word;
-        mWordObject = new WordObject();
-        this.setOrientation(HORIZONTAL);
-        init();
     }
 
-   public void init() {
+    public void init(String word) {
+        this.mWord = word;
+        mWordObject = new WordObject();
+        convertToWordObject();
+        makeCurrentLayout();
+    }
+
+    public CurrentWordLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public CurrentWordLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public CurrentWordLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    private void convertToWordObject() {
         for( int i = 0; i < mWord.length(); i++ ) {
             LetterObject obj = new LetterObject();
             obj.setId(i);
-            obj.setLetter(mWord.charAt(i));
+            obj.setLetter(String.valueOf(mWord.charAt(i)));
             mWordObject.add(obj);
-            this.addView(makeLetterBtn(obj));
         }
     }
 
-    private Button makeLetterBtn(LetterObject obj) {
-        Button letterBtn = new Button(mContext);
-        letterBtn.setId(obj.getId());
-        letterBtn.setText(String.valueOf(obj.getLetter()));
-        letterBtn.setOnClickListener(this);
-        return letterBtn;
+    private void makeCurrentLayout() {
+        for (LetterObject obj: mWordObject) {
+            LetterButton btn = new LetterButton(getContext(), obj);
+            btn.setOnClickListener(this);
+            this.addView(btn);
+        }
     }
 
    @Override
    public void onClick(View v) {
-
-       ((WordFragment)((MainActivity) mContext).getPresentFragment())
+       ((WordFragment)((MainActivity) getContext()).getPresentFragment())
                .mUserWordLL.addLetter(mWordObject.getLetterById(v.getId()));
        v.setEnabled(false);
     }

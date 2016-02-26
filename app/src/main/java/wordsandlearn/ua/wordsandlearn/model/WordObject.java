@@ -1,6 +1,8 @@
-package wordsandlearn.ua.wordsandlearn;
+package wordsandlearn.ua.wordsandlearn.model;
 
 import java.util.ArrayList;
+
+import wordsandlearn.ua.wordsandlearn.model.LetterObject;
 
 /**
  * Created by antonina on 24.02.16.

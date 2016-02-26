@@ -1,21 +1,16 @@
 package wordsandlearn.ua.wordsandlearn;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
+import wordsandlearn.ua.wordsandlearn.model.LetterObject;
 import wordsandlearn.ua.wordsandlearn.view.CurrentWordLayout;
+import wordsandlearn.ua.wordsandlearn.view.LetterButton;
 import wordsandlearn.ua.wordsandlearn.view.UserWordLayout;
-
-import static wordsandlearn.ua.wordsandlearn.Constans.CONST_TAG_LETTER_ADD;
-import static wordsandlearn.ua.wordsandlearn.Constans.CONST_TAG_LETTER_DELETE;
 
 /**
  * Created by antonina on 21.02.16.
@@ -24,8 +19,7 @@ public class WordFragment extends Fragment implements View.OnClickListener{
     public UserWordLayout mUserWordLL;
     private Button mDeleteBtn;
     private Button mApplyBtn;
-    private RelativeLayout mCurrentWordRL;
-    private CurrentWordLayout mWordRL;
+    private CurrentWordLayout mCurrentWordLL;
 
     public static WordFragment newInstance () {
         return new WordFragment();
@@ -39,9 +33,8 @@ public class WordFragment extends Fragment implements View.OnClickListener{
         mDeleteBtn = (Button) view.findViewById(R.id.btnDelete);
            mDeleteBtn.setOnClickListener(this);
         mApplyBtn  = (Button) view.findViewById(R.id.btnApply);
-        mCurrentWordRL = (RelativeLayout) view.findViewById(R.id.rlCurrentWord);
-        mWordRL = new CurrentWordLayout(getActivity(), "word");
-        mCurrentWordRL.addView(mWordRL);
+        mCurrentWordLL = (CurrentWordLayout) view.findViewById(R.id.llCurrentWord);
+           mCurrentWordLL.init("woru");
         return view;
     }
 

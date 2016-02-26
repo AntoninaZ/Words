@@ -1,17 +1,17 @@
-package wordsandlearn.ua.wordsandlearn;
+package wordsandlearn.ua.wordsandlearn.model;
 
 /**
  * Created by antonina on 24.02.16.
  */
 public class LetterObject {
-    private char letter;
+    private String letter;
     private int id;
 
-    public void setLetter(Character letter) {
+    public void setLetter(String letter) {
         this.letter = letter;
     }
 
-    public char getLetter() {
+    public String getLetter() {
         return this.letter;
     }
 

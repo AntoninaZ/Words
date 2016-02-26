@@ -7,18 +7,21 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import wordsandlearn.ua.wordsandlearn.LetterObject;
-import wordsandlearn.ua.wordsandlearn.WordObject;
+import wordsandlearn.ua.wordsandlearn.model.LetterObject;
+import wordsandlearn.ua.wordsandlearn.model.WordObject;
+
 
 /**
  * Created by antonina on 25.02.2016.
  */
 public class UserWordLayout extends LinearLayout {
+    private Context mContext;
     private WordObject mWord = new WordObject();
     private int mWordLength;
 
     public UserWordLayout(Context context) {
         super(context);
+        this.mContext = context;
     }
 
     public UserWordLayout(Context context, AttributeSet attrs) {
@@ -40,11 +43,11 @@ public class UserWordLayout extends LinearLayout {
 
     public void addLetter(LetterObject obj) {
         mWord.add(obj);
-        TextView letterTV = new TextView(getContext());
-        letterTV.setTextSize(40);
-        letterTV.setId(obj.getId());
-        letterTV.setText(String.valueOf(obj.getLetter()));
-        this.addView(letterTV);
+        TextView tvLetter = new TextView(getContext());
+        tvLetter.setTextSize(40);
+        tvLetter.setId(obj.getId());
+        tvLetter.setText(String.valueOf(obj.getLetter()));
+        this.addView(tvLetter);
     }
 
     public void deleteLetter () {
