@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import wordsandlearn.ua.wordsandlearn.MainActivity;
+import wordsandlearn.ua.wordsandlearn.WordFragment;
 import wordsandlearn.ua.wordsandlearn.model.LetterObject;
 import wordsandlearn.ua.wordsandlearn.model.WordObject;
 
@@ -54,8 +56,9 @@ public class UserWordLayout extends LinearLayout {
         mWordLength = mWord.size();
         if (mWordLength >= 1 ) {
             this.removeView(findViewById(mWord.get(mWordLength - 1).getId()));
+            ((WordFragment) ((MainActivity) getContext()).getPresentFragment())
+                    .mCurrentWordLL.setEnableLetterButton(mWord.get(mWordLength - 1).getId());
             mWord.remove(mWordLength - 1);
-            mWordLength -= 1;
         }
     }
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import wordsandlearn.ua.wordsandlearn.model.LetterObject;
@@ -28,7 +27,7 @@ public class CurrentWordLayout extends LinearLayout implements View.OnClickListe
         this.mWord = word;
         mWordObject = new WordObject();
         convertToWordObject();
-        makeCurrentLayout();
+        createCurrentLayout();
     }
 
     public CurrentWordLayout(Context context, AttributeSet attrs) {
@@ -53,12 +52,16 @@ public class CurrentWordLayout extends LinearLayout implements View.OnClickListe
         }
     }
 
-    private void makeCurrentLayout() {
+    private void createCurrentLayout() {
         for (LetterObject obj: mWordObject) {
             LetterButton btn = new LetterButton(getContext(), obj);
             btn.setOnClickListener(this);
             this.addView(btn);
         }
+    }
+
+    public void setEnableLetterButton(int id) {
+        findViewById(id).setEnabled(true);
     }
 
    @Override

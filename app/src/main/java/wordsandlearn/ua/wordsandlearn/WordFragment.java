@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import wordsandlearn.ua.wordsandlearn.model.LetterObject;
 import wordsandlearn.ua.wordsandlearn.view.CurrentWordLayout;
@@ -17,9 +18,9 @@ import wordsandlearn.ua.wordsandlearn.view.UserWordLayout;
  */
 public class WordFragment extends Fragment implements View.OnClickListener{
     public UserWordLayout mUserWordLL;
-    private Button mDeleteBtn;
-    private Button mApplyBtn;
-    private CurrentWordLayout mCurrentWordLL;
+    private ImageButton mDeleteBtn;
+    private ImageButton mApplyBtn;
+    public CurrentWordLayout mCurrentWordLL;
 
     public static WordFragment newInstance () {
         return new WordFragment();
@@ -30,11 +31,11 @@ public class WordFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_word, container, false);
         mUserWordLL = (UserWordLayout) view.findViewById(R.id.llUserWord);
-        mDeleteBtn = (Button) view.findViewById(R.id.btnDelete);
+        mDeleteBtn = (ImageButton) view.findViewById(R.id.btnDelete);
            mDeleteBtn.setOnClickListener(this);
-        mApplyBtn  = (Button) view.findViewById(R.id.btnApply);
+        mApplyBtn  = (ImageButton) view.findViewById(R.id.btnApply);
         mCurrentWordLL = (CurrentWordLayout) view.findViewById(R.id.llCurrentWord);
-           mCurrentWordLL.init("woru");
+           mCurrentWordLL.init("woggru");
         return view;
     }
 

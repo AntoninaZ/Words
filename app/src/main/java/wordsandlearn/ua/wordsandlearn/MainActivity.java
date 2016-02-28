@@ -1,5 +1,6 @@
 package wordsandlearn.ua.wordsandlearn;
 
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private boolean mDoubleBackToExitPressedOnce = false;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             if (!(mPresentFragment instanceof WordFragment)) {
                 setToolbar();
                 putContentBelowToolBar();
-            }
+            } else mToolBar.setVisibility(View.GONE);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mPresentFragment).commit();
         }
     }
@@ -78,5 +80,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDoubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.mDoubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                mDoubleBackToExitPressedOnce = false;
+            }
+        }, 4000);
     }
 }

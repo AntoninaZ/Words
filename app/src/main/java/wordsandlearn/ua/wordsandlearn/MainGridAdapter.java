@@ -2,11 +2,13 @@ package wordsandlearn.ua.wordsandlearn;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 
 /**
  * Created by antonina on 21.02.16.
@@ -41,17 +43,16 @@ public class MainGridAdapter  extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        Button btn;
+        ImageButton btn;
         if (view == null) {
-            btn = new Button(mContext);
+            btn = new ImageButton(mContext);
             btn.setLayoutParams(new GridView.LayoutParams(100, 55));
             btn.setPadding(8, 8, 8, 8);
         }
         else {
-            btn = (Button) view;
+            btn = (ImageButton) view;
         }
-        btn.setText(filenames[i]);
-        btn.setTextColor(Color.DKGRAY);
+        btn.setImageResource(R.mipmap.ic_action_lock);
         btn.setId(i);
         btn.setOnClickListener(new MyOnClickListener(i, mContext));
         return btn;

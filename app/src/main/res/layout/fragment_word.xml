@@ -19,22 +19,25 @@
             android:paddingLeft="10dp"
             android:layout_alignParentRight="true">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnDelete"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorAccent"
-                android:textColor="@android:color/white"
                 android:layout_marginBottom="10dp"
-                android:text="clear"/>
+                android:src="@mipmap/ic_content_backspace"/>
 
-            <Button
-                android:id="@+id/btnApply"
-                android:layout_width="match_parent"
+            <ImageButton
+                android:id="@+id/btnClear"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorAccent"
-                android:textColor="@android:color/white"
-                android:text="apply"/>
+                android:layout_marginBottom="10dp"
+                android:src="@mipmap/ic_action_delete"/>
+
+            <ImageButton
+                android:id="@+id/btnApply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_action_done"/>
 
         </LinearLayout>
 
