@@ -43,16 +43,16 @@ public class MainGridAdapter  extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ImageButton btn;
+        Button btn;
         if (view == null) {
-            btn = new ImageButton(mContext);
+            btn = new Button(mContext);
             btn.setLayoutParams(new GridView.LayoutParams(100, 55));
             btn.setPadding(8, 8, 8, 8);
         }
         else {
-            btn = (ImageButton) view;
+            btn = (Button) view;
         }
-        btn.setImageResource(R.mipmap.ic_action_lock);
+        btn.setBackgroundResource(R.mipmap.ic_action_lock);
         btn.setId(i);
         btn.setOnClickListener(new MyOnClickListener(i, mContext));
         return btn;
