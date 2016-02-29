@@ -5,12 +5,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-import wordsandlearn.ua.wordsandlearn.model.LetterObject;
 import wordsandlearn.ua.wordsandlearn.view.CurrentWordLayout;
-import wordsandlearn.ua.wordsandlearn.view.LetterButton;
 import wordsandlearn.ua.wordsandlearn.view.UserWordLayout;
 
 /**
@@ -18,7 +15,8 @@ import wordsandlearn.ua.wordsandlearn.view.UserWordLayout;
  */
 public class WordFragment extends Fragment implements View.OnClickListener{
     public UserWordLayout mUserWordLL;
-    private ImageButton mDeleteBtn;
+    private ImageButton mBackSpaceBtn;
+    private ImageButton mClearBtn;
     private ImageButton mApplyBtn;
     public CurrentWordLayout mCurrentWordLL;
 
@@ -30,22 +28,36 @@ public class WordFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_word, container, false);
-        mUserWordLL = (UserWordLayout) view.findViewById(R.id.llUserWord);
-        mDeleteBtn = (ImageButton) view.findViewById(R.id.btnDelete);
-           mDeleteBtn.setOnClickListener(this);
-        mApplyBtn  = (ImageButton) view.findViewById(R.id.btnApply);
-        mCurrentWordLL = (CurrentWordLayout) view.findViewById(R.id.llCurrentWord);
-           mCurrentWordLL.init("woggru");
+           initViews(view);
+           setListeners();
         return view;
+    }
+    private void initViews(View view) {
+        mUserWordLL      = (UserWordLayout) view.findViewById(R.id.llUserWord);
+        mBackSpaceBtn    = (ImageButton) view.findViewById(R.id.btnDelete);
+        mClearBtn        = (ImageButton) view.findViewById(R.id.btnClear);
+        mApplyBtn        = (ImageButton) view.findViewById(R.id.btnApply);
+        mCurrentWordLL   = (CurrentWordLayout) view.findViewById(R.id.llCurrentWord);
+        mCurrentWordLL.init("woggru");
+    }
+
+    private void setListeners() {
+        mBackSpaceBtn.setOnClickListener(this);
+        mClearBtn.setOnClickListener(this);
+        mApplyBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnDelete:
-                    mUserWordLL.deleteLetter();
+                mUserWordLL.deleteLetter();
                 break;
             case R.id.btnApply:
+
+                break;
+            case R.id.btnClear:
+
                 break;
         }
     }
