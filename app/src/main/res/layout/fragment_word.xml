@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <wordsandlearn.ua.wordsandlearn.view.UserWordLayout
             android:id="@+id/llUserWord"
             android:layout_width="match_parent"
@@ -12,42 +17,44 @@
             android:layout_alignParentLeft="true"
             android:layout_marginRight="100dp"/>
 
-        <LinearLayout
+        <ListView
+            android:id="@+id/lvAllWords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="100dp"
+            android:isScrollContainer="true"  />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:layout_alignParentRight="true">
+
+        <ImageButton
+            android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:layout_alignParentRight="true">
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/ic_content_backspace"/>
 
-            <ImageButton
-                android:id="@+id/btnDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:src="@mipmap/ic_content_backspace"/>
+        <ImageButton
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/ic_action_delete"/>
 
-            <ImageButton
-                android:id="@+id/btnClear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:src="@mipmap/ic_action_delete"/>
+        <ImageButton
+            android:id="@+id/btnApply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_action_done"/>
 
-            <ImageButton
-                android:id="@+id/btnApply"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_action_done"/>
-
-        </LinearLayout>
-
-    <TextView
-        android:id="@+id/allUserWords"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="100dp"
-        android:layout_below="@+id/llUserWord"/>
+    </LinearLayout>
 
     <wordsandlearn.ua.wordsandlearn.view.CurrentWordLayout
         android:id="@+id/llCurrentWord"
@@ -61,8 +68,8 @@
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"
+        android:paddingTop="10dp"
         android:background="@android:color/darker_gray"
         android:layout_above="@+id/llCurrentWord"/>
-
 
 </RelativeLayout>

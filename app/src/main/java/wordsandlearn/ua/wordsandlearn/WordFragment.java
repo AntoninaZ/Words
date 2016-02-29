@@ -5,7 +5,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
 
 import wordsandlearn.ua.wordsandlearn.view.CurrentWordLayout;
 import wordsandlearn.ua.wordsandlearn.view.UserWordLayout;
@@ -18,6 +24,9 @@ public class WordFragment extends Fragment implements View.OnClickListener{
     private ImageButton mBackSpaceBtn;
     private ImageButton mClearBtn;
     private ImageButton mApplyBtn;
+    private ListView mAllWordsLV;
+    private ArrayAdapter<String> mAllWordsAdapter;
+    private ArrayList<String> mAllWordsArray;
     public CurrentWordLayout mCurrentWordLL;
 
     public static WordFragment newInstance () {
@@ -33,11 +42,16 @@ public class WordFragment extends Fragment implements View.OnClickListener{
         return view;
     }
     private void initViews(View view) {
-        mUserWordLL      = (UserWordLayout) view.findViewById(R.id.llUserWord);
-        mBackSpaceBtn    = (ImageButton) view.findViewById(R.id.btnDelete);
-        mClearBtn        = (ImageButton) view.findViewById(R.id.btnClear);
-        mApplyBtn        = (ImageButton) view.findViewById(R.id.btnApply);
-        mCurrentWordLL   = (CurrentWordLayout) view.findViewById(R.id.llCurrentWord);
+        mUserWordLL     = (UserWordLayout) view.findViewById(R.id.llUserWord);
+        mBackSpaceBtn   = (ImageButton) view.findViewById(R.id.btnDelete);
+        mClearBtn       = (ImageButton) view.findViewById(R.id.btnClear);
+        mApplyBtn       = (ImageButton) view.findViewById(R.id.btnApply);
+        mAllWordsLV     = (ListView) view.findViewById(R.id.lvAllWords);
+        mAllWordsArray  = new ArrayList();
+        mAllWordsAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, mAllWordsArray);
+        mAllWordsLV.setAdapter(mAllWordsAdapter);
+        mCurrentWordLL  = (CurrentWordLayout) view.findViewById(R.id.llCurrentWord);
         mCurrentWordLL.init("woggru");
     }
 
@@ -54,10 +68,11 @@ public class WordFragment extends Fragment implements View.OnClickListener{
                 mUserWordLL.deleteLetter();
                 break;
             case R.id.btnApply:
-
+                mAllWordsArray.add(mUserWordLL.getWord());
+                mAllWordsAdapter.notifyDataSetChanged();
                 break;
             case R.id.btnClear:
-
+                mUserWordLL.clearWord();
                 break;
         }
     }

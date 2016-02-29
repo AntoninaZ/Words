@@ -60,8 +60,8 @@ public class CurrentWordLayout extends LinearLayout implements View.OnClickListe
         }
     }
 
-    public void setEnableLetterButton(int id) {
-        findViewById(id).setEnabled(true);
+    public void setEnableLetterButton(LetterObject obj) {
+        findViewById(obj.getId()).setEnabled(true);
     }
 
    @Override

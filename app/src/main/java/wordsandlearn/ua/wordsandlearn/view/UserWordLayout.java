@@ -39,8 +39,16 @@ public class UserWordLayout extends LinearLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public WordObject getWord() {
-        return mWord;
+    private int getWordLength() {
+        return mWord.size();
+    }
+
+    public String getWord() {
+        String word = "";
+        for (LetterObject obj: mWord) {
+            word += obj.getLetter();
+        }
+        return word;
      }
 
     public void addLetter(LetterObject obj) {
@@ -53,12 +61,21 @@ public class UserWordLayout extends LinearLayout {
     }
 
     public void deleteLetter () {
-        mWordLength = mWord.size();
+        mWordLength = getWordLength();
         if (mWordLength >= 1 ) {
             this.removeView(findViewById(mWord.get(mWordLength - 1).getId()));
             ((WordFragment) ((MainActivity) getContext()).getPresentFragment())
-                    .mCurrentWordLL.setEnableLetterButton(mWord.get(mWordLength - 1).getId());
+                 .mCurrentWordLL.setEnableLetterButton(mWord.get(mWordLength - 1));
             mWord.remove(mWordLength - 1);
+        }
+    }
+
+    public void clearWord () {
+        this.removeAllViews();
+        for (int i = getWordLength() - 1; i >= 0 ; i--) {
+           ((WordFragment) ((MainActivity) getContext())
+                 .getPresentFragment()).mCurrentWordLL.setEnableLetterButton(mWord.get(i));
+            mWord.remove(i);
         }
     }
 }
