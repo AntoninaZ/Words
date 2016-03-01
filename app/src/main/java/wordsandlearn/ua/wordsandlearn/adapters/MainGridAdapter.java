@@ -1,4 +1,4 @@
-package wordsandlearn.ua.wordsandlearn;
+package wordsandlearn.ua.wordsandlearn.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -9,6 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+
+import wordsandlearn.ua.wordsandlearn.MainActivity;
+import wordsandlearn.ua.wordsandlearn.R;
+import wordsandlearn.ua.wordsandlearn.WordFragment;
 
 /**
  * Created by antonina on 21.02.16.
